@@ -1,0 +1,77 @@
+@mixin centerContent ($justif, $align) {
+display: flex;
+justify-content: $justif;
+align-items: $align;   
+}
+
+@mixin sizeConfig($height, $width) {
+ height: $height;
+ width: $width;
+}
+
+html,body, #drum-machine {
+  @include sizeConfig(100%,100%);
+  @include centerContent(center,center);
+  background-image: radial-gradient(circle, rgb(102, 140, 255),rgb(26, 83, 255), rgb(0, 57, 230), rgb(0, 38, 153), rgb(0, 19, 77));
+}
+
+#display{
+  @include centerContent (center,center);
+  @include sizeConfig(50%,80%);
+  background-color: black;
+  border-radius: 8px;
+  display:flex;
+  justify-content: space-around;
+
+ 
+  
+}
+
+#control-panel {
+  background-color: yellow;
+  @include sizeConfig(80%,40%);
+  @include centerContent(center,center);
+  flex-direction:column;
+  border-radius: 5px;
+  color:  black;
+
+  
+  
+}
+.drum-pad {
+  @include centerContent(center,center);
+  font-weight: bold;
+    &:active{ background-color:yellow !important;
+                color: black !important;} 
+}
+#container {
+  @include sizeConfig(80%,45%);
+  display:grid;
+  grid-gap:5%;
+  grid-template-columns: auto auto auto;
+  
+}
+
+span, h4, h5{
+  font-size: 5vmin;
+  text-align: center;
+}
+
+@media  (max-width: 360px) {
+ 
+  #display{
+
+    flex-direction: column-reverse;
+    @include sizeConfig(100%,100%);
+    justify-content:space-around;
+    min-width:165px;
+  }
+  
+  #container, #control-panel{
+  @include sizeConfig(45%,80%);
+  text-align: center;
+  }
+  span, h4, h5{
+  font-size: 9vmin;
+}
+}
